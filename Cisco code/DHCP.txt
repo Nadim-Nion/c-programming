@@ -1,0 +1,15 @@
+en
+conf t
+
+int fa0/0
+ip address 192.168.10.1 255.255.255.224
+no shut 
+exit 
+
+ip dhcp pool ipd
+network 192.168.10.0 255.255.255.224
+default-router 192.168.10.1
+exit 
+
+ip dhcp excluded-address 192.168.10.10 192.168.10.20
+exit

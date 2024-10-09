@@ -1,0 +1,102 @@
+Router 1
+========
+en 
+conf t 
+
+int fa0/0
+ip address  192.168.10.1 255.255.255.252
+no shut 
+exit 
+
+int fa1/0
+ip address  192.168.20.1 255.255.255.252
+no shut 
+exit 
+
+int fa2/0
+ip address  192.168.50.1 255.255.255.224
+no shut 
+exit 
+
+ip route 192.168.80.0 255.255.255.224 192.168.10.2
+ip route 192.168.60.0 255.255.255.224 192.168.20.2
+ip route 192.168.70.0 255.255.255.224 192.168.10.2
+exit
+
+Router 2
+========
+
+en 
+conf t 
+
+int fa0/0
+ip address  192.168.10.2 255.255.255.252
+no shut 
+exit 
+
+int fa1/0
+ip address  192.168.40.1 255.255.255.252
+no shut 
+exit 
+
+int fa2/0
+ip address  192.168.80.1 255.255.255.224
+no shut 
+exit 
+
+ip route 192.168.50.0 255.255.255.224 192.168.10.1
+ip route 192.168.70.0 255.255.255.224 192.168.40.2
+ip route 192.168.60.0 255.255.255.224 192.168.10.1
+exit
+
+Router 3
+========
+
+en 
+conf t 
+
+int fa0/0
+ip address  192.168.20.2 255.255.255.252
+no shut 
+exit 
+
+int fa1/0
+ip address  192.168.30.1 255.255.255.252
+no shut 
+exit 
+
+int fa2/0
+ip address  192.168.60.1 255.255.255.224
+no shut 
+exit 
+
+ip route 192.168.50.0 255.255.255.224 192.168.20.1
+ip route 192.168.70.0 255.255.255.224 192.168.30.2
+ip route 192.168.80.0 255.255.255.224 192.168.30.2
+exit
+
+Router 4
+========
+
+en 
+conf t 
+
+int fa0/0
+ip address  192.168.30.2 255.255.255.252
+no shut 
+exit 
+
+int fa1/0
+ip address  192.168.40.2 255.255.255.252
+no shut 
+exit 
+
+int fa2/0
+ip address  192.168.70.1 255.255.255.224
+no shut 
+exit 
+
+ip route 192.168.60.0 255.255.255.224 192.168.30.1
+ip route 192.168.80.0 255.255.255.224 192.168.40.1
+ip route 192.168.50.0 255.255.255.224 192.168.30.1
+exit

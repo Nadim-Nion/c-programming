@@ -1,0 +1,88 @@
+Router 3
+========
+
+en 
+conf t 
+
+int fa0/0
+ip address 192.168.11.2 255.255.255.252 
+no shut 
+exit 
+
+int fa1/0
+ip address 192.168.12.2 255.255.255.252 
+no shut 
+exit 
+
+int fa2/0
+ip address 192.168.14.1 255.255.255.224
+no shut 
+exit 
+
+router ospf 3
+network 192.168.11.0 0.0.0.3 area 2
+network 192.168.14.0 0.0.0.31  area 2
+network 192.168.12.0 0.0.0.3  area 2
+exit
+
+ip dhcp pool ipd
+network 192.168.14.0 255.255.255.224
+default-router 192.168.14.1 
+exit 
+
+ip dhcp excluded-address 192.168.14.10 192.168.14.20
+exit
+
+Router 1
+========
+
+en 
+conf t
+
+int fa0/0
+ip address 192.168.10.1 255.255.255.252
+no shut 
+exit 
+
+int fa1/0
+ip address 192.168.11.1 255.255.255.252
+no shut 
+exit 
+
+int fa2/0
+ip address 192.168.13.1 255.255.255.224
+no shut 
+exit 
+
+router ospf 1
+network 192.168.13.0 0.0.0.31 area 2
+network 192.168.10.0 0.0.0.3  area 2
+network 192.168.11.0 0.0.0.3  area 2
+exit
+
+Router 2
+========
+
+en 
+conf t
+
+int fa0/0
+ip address 192.168.10.2 255.255.255.252
+no shut 
+exit 
+
+int fa1/0
+ip address 192.168.12.1 255.255.255.252
+no shut 
+exit 
+
+int fa2/0
+ip address 192.168.15.1 255.255.255.224
+no shut 
+exit 
+
+router ospf 2
+network 192.168.10.0 0.0.0.3 area 2
+network 192.168.15.0 0.0.0.31 area 2
+network 192.168.12.0 0.0.0.3  area 2
+exit

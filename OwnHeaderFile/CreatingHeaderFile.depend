@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1612801250 source:c:\users\ahsan\3d objects\creatingheaderfile\main.c
+	<stdio.h>
+	"info.h"
+
+1612805248 c:\users\ahsan\3d objects\creatingheaderfile\info.h
+
